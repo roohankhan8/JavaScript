@@ -1,0 +1,40 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: yellowgreen;
+
+}
+.container{
+    background-color: aqua;
+    padding: 10px;
+    border: 1px solid black;
+}
+input[type=text]{
+    text-align: right;
+}
+input[type=text], button{
+    height: 50px;
+}
+button{
+    margin-left: 2px;
+    font-size: .80em;
+}
+.row{
+    margin-top: 2px;
+}
+input[type=button]{
+    padding: 10px;
+    margin: 2px;
+    border: 1px solid black;
+    width: 46px;
+    height: 46px;
+
+}

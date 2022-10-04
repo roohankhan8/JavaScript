@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <form name="form">
+        <div class="result">
+          <input type="text" name="answer" id="answer" placeholder="0" /><button
+            type="reset"
+          >
+            Clear
+          </button>
+        </div>
+        <div class="row">
+          <input
+            type="button"
+            value="9"
+            name="b9"
+            onclick="calcNumber(b9.value)"
+          />
+          <input
+            type="button"
+            value="8"
+            name="b8"
+            onclick="calcNumber(b8.value)"
+          />
+          <input
+            type="button"
+            value="7"
+            name="b7"
+            onclick="calcNumber(b7.value)"
+          />
+          <input
+            type="button"
+            id="operator"
+            value="+"
+            name="b_add"
+            onclick="calcNumber(b_add.value)"
+          />
+        </div>
+        <div class="row">
+          <input
+            type="button"
+            value="6"
+            name="b6"
+            onclick="calcNumber(b6.value)"
+          />
+          <input
+            type="button"
+            value="5"
+            name="b5"
+            onclick="calcNumber(b5.value)"
+          />
+          <input
+            type="button"
+            value="4"
+            name="b4"
+            onclick="calcNumber(b4.value)"
+          />
+          <input
+            type="button"
+            id="operator"
+            value="-"
+            name="b_sub"
+            onclick="calcNumber(b_sub.value)"
+          />
+        </div>
+        <div class="row">
+          <input
+            type="button"
+            value="3"
+            name="b3"
+            onclick="calcNumber(b3.value)"
+          />
+          <input
+            type="button"
+            value="2"
+            name="b2"
+            onclick="calcNumber(b2.value)"
+          />
+          <input
+            type="button"
+            value="1"
+            name="b1"
+            onclick="calcNumber(b1.value)"
+          />
+          <input
+            type="button"
+            id="operator"
+            value="*"
+            name="b_multi"
+            onclick="calcNumber(b_multi.value)"
+          />
+        </div>
+        <div class="row">
+          <input
+            type="button"
+            value="0"
+            name="b0"
+            onclick="calcNumber(b0.value)"
+          />
+          <input
+            type="button"
+            id="operator"
+            value="/"
+            name="b_div"
+            onclick="calcNumber(b_div.value)"
+          />
+          <input
+            type="button"
+            id="operator"
+            value="%"
+            name="b_rem"
+            onclick="calcNumber(b_rem.value)"
+          />
+          <input type="button" id="equal" value="=" name="b_equal" />
+        </div>
+      </form>
+    </div>
+
+    <script>
+      const answer = document.getElementById("answer");
+      const operator = document.getElementById("operator");
+      const equal = document.getElementById("equal");
+
+      var calcNumber = (result) => {
+        form.answer.value = form.answer.value + result;
+        if (form.answer.value[0] == 0) {
+          form.answer.value = "";
+        }
+
+        // if ((form.answer.value+'').includes('+')){
+        // operator.disabled = true
+        // }
+
+        if (
+          form.answer.value[0] == "+" ||
+          form.answer.value[0] == "-" ||
+          form.answer.value[0] == "*" ||
+          form.answer.value[0] == "/" ||
+          form.answer.value[0] == "%"
+        ) {
+          form.answer.value = "";
+        }
+
+        if (form.answer.value != "") {
+          equal.addEventListener("click", () => {
+            answer.value = eval(answer.value);
+          });
+        } else {
+          form.answer.value = "";
+        }
+      };
+    </script>
+  </body>
+</html>
