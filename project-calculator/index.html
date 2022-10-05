@@ -14,7 +14,7 @@
           <input type="text" name="answer" id="answer" placeholder="0" /><button
             type="reset"
           >
-            Clear
+            DEL
           </button>
         </div>
         <div class="row">
@@ -99,20 +99,20 @@
           />
         </div>
         <div class="row">
-          <input
-            type="button"
-            value="0"
-            name="b0"
-            onclick="calcNumber(b0.value)"
-          />
-          <input
+            <input
             type="button"
             id="operator"
             value="/"
             name="b_div"
             onclick="calcNumber(b_div.value)"
-          />
-          <input
+            />
+            <input
+              type="button"
+              value="0"
+              name="b0"
+              onclick="calcNumber(b0.value)"
+            />
+            <input
             type="button"
             id="operator"
             value="%"
@@ -134,10 +134,6 @@
         if (form.answer.value[0] == 0) {
           form.answer.value = "";
         }
-
-        // if ((form.answer.value+'').includes('+')){
-        // operator.disabled = true
-        // }
 
         if (
           form.answer.value[0] == "+" ||
