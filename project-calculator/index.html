@@ -5,17 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Calculator</title>
   </head>
   <body>
     <div class="container">
       <form name="form">
         <div class="result">
-          <input type="text" name="answer" id="answer" placeholder="0" disabled/><button
-            type="reset"
-          >
-            DEL
-          </button>
+          <input
+            type="text"
+            name="answer"
+            id="answer"
+            placeholder="0"
+            disabled
+          /><button type="reset">DEL</button>
         </div>
         <div class="row">
           <input
@@ -99,20 +101,20 @@
           />
         </div>
         <div class="row">
-            <input
+          <input
             type="button"
             id="operator"
             value="/"
             name="b_div"
             onclick="calcNumber(b_div.value)"
-            />
-            <input
-              type="button"
-              value="0"
-              name="b0"
-              onclick="calcNumber(b0.value)"
-            />
-            <input
+          />
+          <input
+            type="button"
+            value="0"
+            name="b0"
+            onclick="calcNumber(b0.value)"
+          />
+          <input
             type="button"
             id="operator"
             value="%"
@@ -130,11 +132,15 @@
       const equal = document.getElementById("equal");
 
       var calcNumber = (result) => {
+        // DISPLAY FIELD
         form.answer.value = form.answer.value + result;
+
+        // IF ZERO IS ANSWER
         if (form.answer.value[0] == 0) {
           form.answer.value = "";
         }
 
+        // IF FIRST INPUT IS OPERATOR
         if (
           form.answer.value[0] == "+" ||
           form.answer.value[0] == "-" ||
@@ -145,6 +151,7 @@
           form.answer.value = "";
         }
 
+        // EVALUATES VALUE ON 'EQUALS TO' CLICK AND DISPLAYS
         if (form.answer.value != "") {
           equal.addEventListener("click", () => {
             answer.value = eval(answer.value);
@@ -153,6 +160,112 @@
           form.answer.value = "";
         }
       };
+
+      // KEYBOARD INPUT LOGIC
+      document.addEventListener(
+        "keydown",
+        () => {
+          switch (event.keyCode) {
+            // FOR KEYBOARD KEYS
+            case 48:
+              form.answer.value += "0";
+              break;
+            case 49:
+              form.answer.value += "1";
+              break;
+            case 50:
+              form.answer.value += "2";
+              break;
+            case 51:
+              form.answer.value += "3";
+              break;
+            case 52:
+              form.answer.value += "4";
+              break;
+            case 53:
+              form.answer.value += "5";
+              break;
+            case 54:
+              form.answer.value += "6";
+              break;
+            case 55:
+              form.answer.value += "7";
+              break;
+            case 56:
+              form.answer.value += "8";
+              break;
+            case 57:
+              form.answer.value += "9";
+              break;
+
+            // FOR NUMPAD KEYS
+            case 96:
+              form.answer.value += "0";
+              break;
+            case 97:
+              form.answer.value += "1";
+              break;
+            case 98:
+              form.answer.value += "2";
+              break;
+            case 99:
+              form.answer.value += "3";
+              break;
+            case 100:
+              form.answer.value += "4";
+              break;
+            case 101:
+              form.answer.value += "5";
+              break;
+            case 102:
+              form.answer.value += "6";
+              break;
+            case 103:
+              form.answer.value += "7";
+              break;
+            case 104:
+              form.answer.value += "8";
+              break;
+            case 105:
+              form.answer.value += "9";
+              break;
+
+            // FOR OPERATORS INPUT
+            case 106:
+              form.answer.value += "*";
+              break;
+            case 16 && 107:
+              form.answer.value += "+";
+              break;
+            case 109:
+              form.answer.value += "-";
+              break;
+            case 111:
+              form.answer.value += "/";
+              break;
+
+            case 187:
+              if (form.answer.value != "") {
+                answer.value = eval(answer.value);
+              } else {
+                form.answer.value = "";
+              }
+              break;
+
+            // BACKSPACE AND DELETE KEY LOGIC
+            case 8:
+              form.answer.value = form.answer.value.slice(0, -1);
+              break;
+            case 46:
+              form.answer.value = form.answer.value.slice(0, -1);
+              break;
+
+            default:
+              break;
+          }
+        },
+        true
+      );
     </script>
   </body>
 </html>
